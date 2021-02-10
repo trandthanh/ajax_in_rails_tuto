@@ -1,6 +1,11 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+    @restaurant_count = Restaurant.count
+    respond_to do |format|
+      format.html
+      format.json { render json: { restaurants: @restaurants }}
+    end
   end
 
   def show

@@ -1,5 +1,16 @@
 <h1>Restaurants</h1>
 
+<div class="flex-center mt-4" data-controller="counter">
+  <div class="counter">
+    <span data-counter-target="count"><%= @restaurant_count %></span>
+  </div>
+
+  <button class="btn btn-outline-secondary"
+          data-action="click->counter#refresh">
+    Refresh counter
+  </button>
+</div>
+
 <ul>
   <% @restaurants.each do |restaurant| %>
     <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
