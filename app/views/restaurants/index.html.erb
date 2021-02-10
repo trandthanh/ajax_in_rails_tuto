@@ -11,8 +11,8 @@
   </button>
 </div>
 
-<ul>
+<div>
   <% @restaurants.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+    <%= render "card", restaurant: restaurant %>
   <% end %>
-</ul>
+</div>

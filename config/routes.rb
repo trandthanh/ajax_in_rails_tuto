@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   resources :restaurants, only: [ :index, :show ] do
     resources :reviews, only: :create
   end
+
+  resources :restaurants, only: [] do
+    patch :mark_as_favorite, on: :member
+  end
 end
