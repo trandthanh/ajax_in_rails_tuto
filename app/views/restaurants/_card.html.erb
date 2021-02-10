@@ -6,7 +6,14 @@
         <h2><%= restaurant.name %></h2>
       <% end %>
 
-      <%= link_to mark_as_favorite_restaurant_path(restaurant), method: :patch, class: "ml-2 favorite" do %>
+      <%= link_to mark_as_favorite_restaurant_path(restaurant), method: :patch,
+                                                                class: "ml-2 favorite",
+                                                                data: {
+                                                                  controller: "favorite",
+                                                                  favorite_target: "star",
+                                                                  favorite_restaurant_id_value: "#{restaurant.id}",
+                                                                  action: "click->favorite#updateStar"
+                                                                } do %>
         <%= render "favorite", restaurant: restaurant %>
       <% end %>
     </div>

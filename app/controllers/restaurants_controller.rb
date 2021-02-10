@@ -16,7 +16,16 @@ class RestaurantsController < ApplicationController
   def mark_as_favorite
     @restaurant = Restaurant.find(params[:id])
     @restaurant.toggle(:favorite)
-    @restaurant.save
-    redirect_to restaurants_path
+    @restaurant.save!
+    respond_to do |format|
+      format.html
+      format.js do
+        render partial: "favorite", locals: { restaurant: @restaurant }
+        @restaurant.toggle(:favorite)
+        @restaurant.save!
+      end
+    end
   end
 end
+
+
