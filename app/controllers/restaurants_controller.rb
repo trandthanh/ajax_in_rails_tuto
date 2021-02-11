@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
     @review = Review.new
   end
 
-  def mark_as_favorite
+  def mark_as_favorite # toggle_favorite
     @restaurant = Restaurant.find(params[:id])
     @restaurant.toggle(:favorite)
     @restaurant.save!
@@ -21,8 +21,8 @@ class RestaurantsController < ApplicationController
       format.html
       format.js do
         render partial: "favorite", locals: { restaurant: @restaurant }
-        @restaurant.toggle(:favorite)
-        @restaurant.save!
+        # @restaurant.toggle(:favorite)
+        # @restaurant.save!
       end
     end
   end
