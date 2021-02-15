@@ -1,0 +1,23 @@
+<div class="card-product m-3">
+  <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" %>
+  <div class="card-product-infos">
+    <div class="d-flex align-items-center">
+      <%= link_to restaurant_path(restaurant), class: "card-link" do %>
+        <h2><%= restaurant.name %></h2>
+      <% end %>
+
+      <%= link_to mark_as_favorite_restaurant_path(restaurant), method: :patch,
+                                                                class: "ml-2 favorite",
+                                                                data: {
+                                                                  controller: "favorite",
+                                                                  favorite_target: "star",
+                                                                  favorite_restaurant_id_value: "#{restaurant.id}",
+                                                                  action: "click->favorite#updateStar"
+                                                                } do %>
+        <%= render "favorite", restaurant: restaurant %>
+      <% end %>
+    </div>
+
+    <p><%= restaurant.address %></p>
+  </div>
+</div>
